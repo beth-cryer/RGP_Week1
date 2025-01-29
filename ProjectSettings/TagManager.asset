@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arena
   - Stickable
+  - TargetGroup
   layers:
   - Default
   - TransparentFX

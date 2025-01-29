@@ -13,12 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float blastRadius = 3f;
     [SerializeField] private float blastForce = 50f;
 
+    [SerializeField] private Transform cam;
+
     private float currentSpeed = 0f;
 
     private bool go = false;
     private Rigidbody rb;
     private Beyblade bb;
-    private CamController cam;
 
     private float h = 0f;
     private float v = 0f;
@@ -35,8 +36,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.useGravity = true;
-            rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
-            rb.AddTorque(transform.up * 360, ForceMode.Impulse);
+            //rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
+            //rb.AddTorque(transform.up * 360, ForceMode.Impulse);
 
             go = true;
         }
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + cam.transform.up * 5f, Color.red);
         Debug.DrawLine(transform.position, transform.position + cam.transform.right * 5f, Color.red);
 
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("hit");
             }
         }
-
+        */
         
     }
 
@@ -100,14 +102,16 @@ public class PlayerController : MonoBehaviour
             var hSpeed = h * cam.transform.right * moveSpeed;
             var vSpeed = v * cam.transform.up * moveSpeed;
 
-            rb.AddForce(hSpeed, ForceMode.Force);
-            rb.AddForce(vSpeed, ForceMode.Force);
+            rb.AddForce(hSpeed, ForceMode.Acceleration);
+            rb.AddForce(vSpeed, ForceMode.Acceleration);
+
+            rb.AddTorque(transform.up * 60, ForceMode.Acceleration);
 
             //transform.position = transform.position + hSpeed + vSpeed;
         }
     }
 
-    public void SetCam(CamController cam)
+    public void SetCam(Transform cam)
     {
         this.cam = cam;
     }

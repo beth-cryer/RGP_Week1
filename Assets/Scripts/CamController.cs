@@ -10,7 +10,7 @@ public class CamController : MonoBehaviour
 
     private void Start()
     {
-        player.GetComponent<PlayerController>().SetCam(this);
+        //player.GetComponent<PlayerController>().SetCam(this);
     }
 
     private void Update()
@@ -18,6 +18,6 @@ public class CamController : MonoBehaviour
         var pos = player.transform.position;
 
         transform.position = Vector3.SmoothDamp(transform.position, pos + Vector3.up * camDistance, ref velocity, smoothTime);
-        transform.LookAt(pos);
+        //transform.LookAt(pos);
     }
 }
