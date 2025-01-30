@@ -10,6 +10,7 @@ public class StickyObject : MonoBehaviour
     public Enemy enemy;
     private Beyblade bb;
 
+    public Joint parentJoint;
     private CinemachineTargetGroup targetGroup;
     private Rigidbody rb;
 
@@ -40,20 +41,25 @@ public class StickyObject : MonoBehaviour
     //Set stickyobject to stuck and attach to parent with joint
     public void StickToParent(Transform newParent, Transform jointTarget)
     {
-        if (newParent) transform.parent = newParent;
+        //if (newParent) transform.parent = newParent;
 
         gameObject.layer = LayerMask.NameToLayer(player ? "StuckObject" : "EnemyStuckObject");
 
+        rb.useGravity = false;
+
         Joint joint = jointTarget.AddComponent<FixedJoint>();
         joint.connectedBody = rb;
+
+        parentJoint = joint;
     }
 
     //Parent touched stickyobject to this
     //Unstick component and remove StickObject and parent Joint components
     public void UnstickFromParent(Transform parent)
     {
-        
-        transform.SetParent(null, false);
+
+        //transform.SetParent(null, false);
+        rb.useGravity = true;
         gameObject.layer = 0;
         Destroy(parent.GetComponent<FixedJoint>());
     }
@@ -67,7 +73,7 @@ public class StickyObject : MonoBehaviour
 
         if (GetComponent<PlayerController>() != null)
         {
-            targetGroup.m_Targets[0].radius = Mathf.Clamp(radius, 5f, radius);
+            targetGroup.m_Targets[0].radius = Mathf.Clamp(radius, 2.5f, radius);
         }
         else
         {
@@ -80,15 +86,15 @@ public class StickyObject : MonoBehaviour
     {
         targetGroup.RemoveMember(transform);
 
-        float playerRadius = transform.localScale.magnitude / 2;
+        float playerRadius = transform.localScale.x / 4;
 
         float newPlayerRadius = targetGroup.m_Targets[0].radius - playerRadius;
-        targetGroup.m_Targets[0].radius = newPlayerRadius > 5f ? newPlayerRadius : 5f;
+        targetGroup.m_Targets[0].radius = newPlayerRadius > 2.5f ? newPlayerRadius : 2.5f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        float size = collision.transform.localScale.magnitude;
+        float size = (collision.transform.localScale.x + collision.transform.localScale.z) / 2;
         float radius = size / 2;
 
         if (collision.transform.CompareTag("Stickable"))
@@ -112,21 +118,23 @@ public class StickyObject : MonoBehaviour
                     stickyObject.UnstickFromParent(stickyObject.transform.parent);
                 }
 
+                /*
                 //RemoveFromCam();
                 //UnstickFromParent(transform.parent);
 
                 //player.totalSize -= transform.localScale.magnitude;
-
+                
                 Vector3 scale = transform.localScale;
                 Vector3 colScale = collision.transform.localScale;
                 collision.transform.localScale = new Vector3(colScale.x - scale.x, colScale.y - scale.y, colScale.z - scale.z);
 
-                //Destroy(this);
+                Destroy(this);
+                */
                 return;
             }
 
             //If player totalSize beats colliding object, add it to the katamari
-            Debug.Log("Another for the collection....");
+            Debug.Log("THE BEYBLADE GROWS");
 
             //If objext already sticky and attached to enemy,
             if (stickyObject && stickyObject.enemy)
@@ -143,6 +151,7 @@ public class StickyObject : MonoBehaviour
                 targetStickyObject.StickToParent(stickParent, stickParent);
             }
 
+            //bb.Spin(60f);
             bb.totalSize += radius;
         }
     }

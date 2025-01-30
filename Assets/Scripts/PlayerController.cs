@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
+        
+
         //transform.Rotate(transform.up, 360f * Time.deltaTime);
 
         //Angle to slope

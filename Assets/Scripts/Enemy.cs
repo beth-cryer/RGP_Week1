@@ -35,8 +35,8 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        var hSpeed = h * Vector3.right * moveSpeed;
-        var vSpeed = v * Vector3.forward * moveSpeed;
+        var hSpeed = h * Vector3.right * moveSpeed * Time.deltaTime;
+        var vSpeed = v * Vector3.forward * moveSpeed * Time.deltaTime;
 
         bb.Move(hSpeed, vSpeed);
     }

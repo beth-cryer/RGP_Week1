@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Beyblade : MonoBehaviour
 {
-    public float totalSize = 5f;
+    public float totalSize = 2.5f;
     public Vector3 spinAxis { get; private set; }
 
     private Rigidbody rb;
@@ -20,13 +20,29 @@ public class Beyblade : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + spinAxis.normalized * 5f, Color.red);
     }
 
+    private void FixedUpdate()
+    {
+        rb.angularVelocity = transform.up * 30f * totalSize / 4;
+        //rb.AddTorque(transform.up * 30f * totalSize, ForceMode.Acceleration);
+        //transform.Rotate(transform.up, 60f * totalSize * Time.deltaTime);
+    }
+
     public void Move(Vector3 hSpeed, Vector3 vSpeed)
     {
-        rb.AddForce(hSpeed, ForceMode.Acceleration);
-        rb.AddForce(vSpeed, ForceMode.Acceleration);
+        //rb.velocity = hSpeed + vSpeed;
 
-        rb.AddTorque(Vector3.up * 30f * totalSize, ForceMode.Acceleration);
+        rb.AddForce(hSpeed * totalSize / 4, ForceMode.Acceleration);
+        rb.AddForce(vSpeed * totalSize / 4, ForceMode.Acceleration);
+       
+
+        //transform.Translate(hSpeed + vSpeed, Space.World);
     }
+
+    public void Spin(float spinSpeed)
+    {
+        //rb.AddTorque(transform.up * spinSpeed * totalSize, ForceMode.Impulse);
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
