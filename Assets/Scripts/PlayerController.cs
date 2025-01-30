@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform cam;
 
-    private float currentSpeed = 0f;
+    public float totalSize = 5f;
 
     private bool go = false;
     private Rigidbody rb;
@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         bb = GetComponent<Beyblade>();
-        currentSpeed = initialSpeed;
     }
 
     private void Update()

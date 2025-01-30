@@ -1,15 +1,21 @@
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StickyObject : MonoBehaviour
 {
     [SerializeField] Transform stickParent;
 
+    private PlayerController player;
     private CinemachineTargetGroup targetGroup;
+    private Rigidbody rb;
 
-    private void Start()
+    private void Awake()
     {
+        player = FindObjectOfType<PlayerController>();
         targetGroup = GameObject.FindGameObjectWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
+
+        rb = GetComponent<Rigidbody>();
 
         if (stickParent == null)
         {
@@ -17,32 +23,100 @@ public class StickyObject : MonoBehaviour
         }
     }
 
+    //Set collided stickyobject's parent to this
+    //Set stickyobject to stuck and attach to parent with joint
+    public void StickToParent(Transform newParent)
+    {
+        transform.parent = newParent;
+
+        gameObject.layer = LayerMask.NameToLayer("StuckObject");
+
+        Joint joint = newParent.AddComponent<FixedJoint>();
+        joint.connectedBody = rb;
+    }
+
+    //Parent touched stickyobject to this
+    //Unstick component and remove StickObject and parent Joint components
+    public void UnstickFromParent(Transform parent)
+    {
+        
+        transform.SetParent(null, false);
+        gameObject.layer = 0;
+        Destroy(parent.GetComponent<FixedJoint>());
+    }
+
+    //Add self to camera target group and add own radius to player view radius
+    public void AddToCam(float radius)
+    {
+        targetGroup.AddMember(transform, 1, radius);
+
+        float playerRadius = radius / 2;
+
+        if (GetComponent<PlayerController>() != null)
+        {
+            targetGroup.m_Targets[0].radius = Mathf.Clamp(radius, 5f, radius);
+        }
+        else
+        {
+            targetGroup.m_Targets[0].radius += playerRadius;
+        }
+    }
+
+    //Remove self from camera target group and subtract own radius from player view radius
+    public void RemoveFromCam()
+    {
+        targetGroup.RemoveMember(transform);
+
+        float playerRadius = transform.localScale.magnitude / 2;
+
+        float newPlayerRadius = targetGroup.m_Targets[0].radius - playerRadius;
+        targetGroup.m_Targets[0].radius = newPlayerRadius > 5f ? newPlayerRadius : 5f;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
+        float size = collision.transform.localScale.magnitude;
+        float radius = size / 2;
+
         if (collision.transform.CompareTag("Stickable"))
         {
-            float radius = collision.transform.localScale.magnitude / 2;
-            targetGroup.AddMember(collision.transform, 1, radius);
+            //Only process StickyObject->Stickable object collisions
+            if (collision.transform.GetComponent<StickyObject>())
+                return;
 
-            float playerRadius = radius / 2;
-            if (GetComponent<PlayerController>() != null)
+            //If colliding object is bigger than player totalSize, reduce size of colliding object and then detach this stickyobject from the katamari
+            if (player.totalSize <= size)
             {
-                targetGroup.m_Targets[0].radius = Mathf.Clamp(radius, 5f, radius);
+                Debug.Log("Too small! " + player.totalSize + " < " + size);
+
+                if (GetComponent<PlayerController>() != null)
+                {
+                    //DIE INSTANTLY
+                    return;
+                }
+
+                RemoveFromCam();
+                UnstickFromParent(transform.parent);
+
+                player.totalSize -= transform.localScale.magnitude;
+
+                Vector3 scale = transform.localScale;
+                Vector3 colScale = collision.transform.localScale;
+                collision.transform.localScale = new Vector3(colScale.x - scale.x, colScale.y - scale.y, colScale.z - scale.z);
+
+                Destroy(this);
+                return;
             }
-            else
-            {
-                targetGroup.m_Targets[0].radius += playerRadius;
-            }
 
-            collision.transform.parent = stickParent;
-            collision.collider.excludeLayers = LayerMask.GetMask("Ground", "Player");
+            //If player totalSize beats colliding object, add it to the katamari
+            Debug.Log("Another for the collection....");
 
-            collision.gameObject.layer = LayerMask.NameToLayer("StuckObject");
-            collision.gameObject.AddComponent<StickyObject>();
+            StickyObject targetStickyObject = collision.gameObject.AddComponent<StickyObject>();
 
-            Joint joint = gameObject.AddComponent<FixedJoint>();
-            joint.connectedBody = collision.rigidbody;
+            targetStickyObject.AddToCam(radius);
+            targetStickyObject.StickToParent(stickParent);
 
+            player.totalSize += radius;
         }
     }
 }
