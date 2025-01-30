@@ -95,16 +95,16 @@ public class StickyObject : MonoBehaviour
                     return;
                 }
 
-                RemoveFromCam();
-                UnstickFromParent(transform.parent);
+                //RemoveFromCam();
+                //UnstickFromParent(transform.parent);
 
-                player.totalSize -= transform.localScale.magnitude;
+                //player.totalSize -= transform.localScale.magnitude;
 
                 Vector3 scale = transform.localScale;
                 Vector3 colScale = collision.transform.localScale;
                 collision.transform.localScale = new Vector3(colScale.x - scale.x, colScale.y - scale.y, colScale.z - scale.z);
 
-                Destroy(this);
+                //Destroy(this);
                 return;
             }
 

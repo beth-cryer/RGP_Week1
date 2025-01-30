@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
+        //transform.Rotate(transform.up, 360f * Time.deltaTime);
+
         //Angle to slope
         RaycastHit hit;
         var grounded = Physics.Raycast(transform.position, -transform.up, out hit, 0.5f, LayerMask.GetMask("Ground"));
@@ -96,17 +98,13 @@ public class PlayerController : MonoBehaviour
     {
         if (go)
         {
-            //rb.AddForce(transform.forward * currentSpeed, ForceMode.Force);
-
-            var hSpeed = h * cam.transform.right * moveSpeed;
-            var vSpeed = v * cam.transform.up * moveSpeed;
+            var hSpeed = h * Vector3.right * moveSpeed;
+            var vSpeed = v * Vector3.forward * moveSpeed;
 
             rb.AddForce(hSpeed, ForceMode.Acceleration);
             rb.AddForce(vSpeed, ForceMode.Acceleration);
 
-            rb.AddTorque(transform.up * 60, ForceMode.Acceleration);
-
-            //transform.position = transform.position + hSpeed + vSpeed;
+            rb.AddTorque(transform.up * 30f * totalSize, ForceMode.Acceleration);
         }
     }
 

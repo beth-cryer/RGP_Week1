@@ -64,8 +64,6 @@ public class Beyblade : MonoBehaviour
 
         float angularSpeed = rb.angularVelocity.magnitude;
 
-        //Debug.Log(totalVelocity);
-
         rb.AddForce(normal * totalVelocity * angularSpeed * 10f, ForceMode.Impulse);
         rb.AddTorque(transform.up * -(totalVelocity * 40f), ForceMode.Impulse);
     }
