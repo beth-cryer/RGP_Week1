@@ -6,13 +6,18 @@ public class StickyObject : MonoBehaviour
 {
     [SerializeField] Transform stickParent;
 
-    private PlayerController player;
+    public PlayerController player;
+    public Enemy enemy;
+    private Beyblade bb;
+
     private CinemachineTargetGroup targetGroup;
     private Rigidbody rb;
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerController>();
+        //Initial check for if this StickyObject is a Player or Enemy
+        GetOwnerBeyblade(GetComponent<PlayerController>(), GetComponent<Enemy>()); //if not, then collision code will pass this instead
+
         targetGroup = GameObject.FindGameObjectWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
 
         rb = GetComponent<Rigidbody>();
@@ -23,15 +28,23 @@ public class StickyObject : MonoBehaviour
         }
     }
 
+    public void GetOwnerBeyblade(PlayerController ownerPlayer, Enemy ownerEnemy)
+    {
+        if (player == null) player = ownerPlayer;
+        if (enemy == null) enemy = ownerEnemy;
+
+        bb = player ? player.GetComponent<Beyblade>() : (enemy ? enemy.GetComponent<Beyblade>() : null);
+    }
+
     //Set collided stickyobject's parent to this
     //Set stickyobject to stuck and attach to parent with joint
-    public void StickToParent(Transform newParent)
+    public void StickToParent(Transform newParent, Transform jointTarget)
     {
-        transform.parent = newParent;
+        if (newParent) transform.parent = newParent;
 
-        gameObject.layer = LayerMask.NameToLayer("StuckObject");
+        gameObject.layer = LayerMask.NameToLayer(player ? "StuckObject" : "EnemyStuckObject");
 
-        Joint joint = newParent.AddComponent<FixedJoint>();
+        Joint joint = jointTarget.AddComponent<FixedJoint>();
         joint.connectedBody = rb;
     }
 
@@ -80,19 +93,23 @@ public class StickyObject : MonoBehaviour
 
         if (collision.transform.CompareTag("Stickable"))
         {
-            //Only process StickyObject->Stickable object collisions
-            if (collision.transform.GetComponent<StickyObject>())
-                return;
+            StickyObject stickyObject = collision.transform.GetComponent<StickyObject>();
 
             //If colliding object is bigger than player totalSize, reduce size of colliding object and then detach this stickyobject from the katamari
-            if (player.totalSize <= size)
+            if (bb.totalSize <= size)
             {
-                Debug.Log("Too small! " + player.totalSize + " < " + size);
+                Debug.Log("Too small! " + bb.totalSize + " < " + size);
 
                 if (GetComponent<PlayerController>() != null)
                 {
                     //DIE INSTANTLY
                     return;
+                }
+
+                //If object is already sticky and attached to an enemy, unstick it from the enemy
+                if (stickyObject && stickyObject.enemy)
+                {
+                    stickyObject.UnstickFromParent(stickyObject.transform.parent);
                 }
 
                 //RemoveFromCam();
@@ -111,12 +128,22 @@ public class StickyObject : MonoBehaviour
             //If player totalSize beats colliding object, add it to the katamari
             Debug.Log("Another for the collection....");
 
-            StickyObject targetStickyObject = collision.gameObject.AddComponent<StickyObject>();
+            //If objext already sticky and attached to enemy,
+            if (stickyObject && stickyObject.enemy)
+            {
+                stickyObject.enemy.transform.parent = stickParent; //parent enemy to this instead of parenting the colliding object
+                stickyObject.StickToParent(null, stickParent);     //then stick colliding object to this with a joint
+            }
+            else
+            {
+                StickyObject targetStickyObject = collision.gameObject.AddComponent<StickyObject>();
+                targetStickyObject.GetOwnerBeyblade(player, enemy);
 
-            targetStickyObject.AddToCam(radius);
-            targetStickyObject.StickToParent(stickParent);
+                targetStickyObject.AddToCam(radius);
+                targetStickyObject.StickToParent(stickParent, stickParent);
+            }
 
-            player.totalSize += radius;
+            bb.totalSize += radius;
         }
     }
 }

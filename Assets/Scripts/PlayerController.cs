@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform cam;
 
-    public float totalSize = 5f;
-
     private bool go = false;
     private Rigidbody rb;
     private Beyblade bb;
@@ -101,16 +99,7 @@ public class PlayerController : MonoBehaviour
             var hSpeed = h * Vector3.right * moveSpeed;
             var vSpeed = v * Vector3.forward * moveSpeed;
 
-            rb.AddForce(hSpeed, ForceMode.Acceleration);
-            rb.AddForce(vSpeed, ForceMode.Acceleration);
-
-            rb.AddTorque(transform.up * 30f * totalSize, ForceMode.Acceleration);
+            bb.Move(hSpeed, vSpeed);
         }
     }
-
-    public void SetCam(Transform cam)
-    {
-        this.cam = cam;
-    }
-    
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Beyblade : MonoBehaviour
 {
+    public float totalSize = 5f;
     public Vector3 spinAxis { get; private set; }
 
     private Rigidbody rb;
@@ -17,6 +18,14 @@ public class Beyblade : MonoBehaviour
     private void Update()
     {
         Debug.DrawLine(transform.position, transform.position + spinAxis.normalized * 5f, Color.red);
+    }
+
+    public void Move(Vector3 hSpeed, Vector3 vSpeed)
+    {
+        rb.AddForce(hSpeed, ForceMode.Acceleration);
+        rb.AddForce(vSpeed, ForceMode.Acceleration);
+
+        rb.AddTorque(Vector3.up * 30f * totalSize, ForceMode.Acceleration);
     }
 
     private void OnCollisionEnter(Collision collision)
