@@ -9,6 +9,7 @@ https://freepbr.com/product/concrete-2/
 https://freepbr.com/product/grassy-meadow1/
 https://freepbr.com/product/pebbled-asphalt1/
 https://freepbr.com/product/old-plywood/
+https://opengameart.org/content/urban-jungle
 
 Models:
 https://opengameart.org/content/low-poly-skyscraper
