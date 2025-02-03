@@ -1,5 +1,11 @@
 # RGP_Week1
 
+HOW TO PLAY:
+Spin into smaller objects to stick to them and increase your own total mass.
+Try to get as big as you can before Unity's physics engine implodes and sends you hurtling into space :)
+
+CONTROLS: WASD to influence spin direction
+That's it
 
 # Asset Credits
 
@@ -24,11 +30,11 @@ BEYBLADE gemstone Free 3D model by errajimohamed498 (2021) - https://www.cgtrade
 Textures:
 
 Freepbr textures are available under a free non-commercial license https://freepbr.com/about-free-pbr/
-https://freepbr.com/product/highway-lanes-pbr/
-https://freepbr.com/product/concrete-2/
-https://freepbr.com/product/grassy-meadow1/
-https://freepbr.com/product/pebbled-asphalt1/
-https://freepbr.com/product/old-plywood/
+Highway Lanes PBR Material by Freepbr - https://freepbr.com/product/highway-lanes-pbr/
+Concrete 2 PBR Material by Freepbr - https://freepbr.com/product/concrete-2/
+Grassy Meadow 1 PBR Material by Freepbr - https://freepbr.com/product/grassy-meadow1/
+Pebbled Asphalt 1 PBR Material by Freepbr - https://freepbr.com/product/pebbled-asphalt1/
+Older Plywood PBR Material by Freepbr - https://freepbr.com/product/old-plywood/
 
 Urban Jungle texture pack by KNau (2012) - https://opengameart.org/content/urban-jungle - CC0 https://creativecommons.org/publicdomain/zero/1.0/
 
