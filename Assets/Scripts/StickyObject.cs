@@ -114,39 +114,36 @@ public class StickyObject : MonoBehaviour
     {
         if (collision.transform.CompareTag("Stickable"))
         {
-            StickableObject target = GetComponent<StickableObject>();
             StickyObject stickyObject = collision.transform.GetComponent<StickyObject>();
-
             if (stickyObject != null) return;
 
             float size = collision.transform.localScale.magnitude;
-
-            if (target != null && target.size != 0)
-                size = target.size;
 
             float width = (collision.transform.localScale.x + collision.transform.localScale.y) / 2;
             float radius = width / 2;
 
             float requiredStickSize = size * 1.75f;
 
-            //If colliding object is bigger than player totalSize, reduce size of colliding object and then detach this stickyobject from the katamari
+            //If colliding object is bigger than player totalSize, don't stick
             if (bb.TotalSize < requiredStickSize)
             {
                 Debug.Log("Too small! " + bb.TotalSize + " < " + requiredStickSize);
 
+                SoundController.Instance.PlayCollide();
+
+                return;
+
+                /*
                 if (GetComponent<PlayerController>() != null)
-                {
-                    //DIE INSTANTLY
                     return;
-                }
 
                 //If object is already sticky and attached to an enemy, unstick it from the enemy
+                
                 if (stickyObject && stickyObject.enemy)
                 {
                     stickyObject.UnstickFromParent(stickyObject.transform.parent);
                 }
 
-                /*
                 //RemoveFromCam();
                 //UnstickFromParent(transform.parent);
 
@@ -158,11 +155,12 @@ public class StickyObject : MonoBehaviour
 
                 Destroy(this);
                 */
-                return;
             }
 
             //If player totalSize beats colliding object, add it to the katamari
             Debug.Log("THE BEYBLADE GROWS. " + bb.TotalSize + " > " + requiredStickSize);
+
+            SoundController.Instance.PlayStick();
 
             //If objext already sticky and attached to enemy,
             if (stickyObject && stickyObject.enemy)

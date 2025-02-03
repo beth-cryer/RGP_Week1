@@ -3,6 +3,16 @@
 
 # Asset Credits
 
+Sounds:
+https://freesound.org/people/dinoroki/sounds/731932/
+Collision 1 by JustInvoke -- https://freesound.org/s/446126/ -- License: Attribution 4.0
+Collision 2 by JustInvoke -- https://freesound.org/s/446125/ -- License: Attribution 4.0
+Collision 3 by JustInvoke -- https://freesound.org/s/446132/ -- License: Attribution 4.0
+
+"Welcome to the Show" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
 Textures:
 https://freepbr.com/product/highway-lanes-pbr/
 https://freepbr.com/product/concrete-2/
