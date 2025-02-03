@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SizeBar sizeBar;
     [SerializeField] private GameObject victoryText;
 
-    private bool go = false;
     private Rigidbody rb;
     private Beyblade bb;
 
@@ -31,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
         bb.OnSizeChange += sizeBar.SetSizeBar;
         bb.OnSizeChange += checkVictory;
+
+        rb.useGravity = true;
     }
 
     private void checkVictory(float size)
@@ -43,26 +44,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.useGravity = true;
-            //rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
-            //rb.AddTorque(transform.up * 360, ForceMode.Impulse);
-
-            go = true;
-        }
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-
-        
-
-        //transform.Rotate(transform.up, 360f * Time.deltaTime);
 
         //Angle to slope
         RaycastHit hit;
@@ -75,33 +68,15 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, slopeRotation * forward, groundAlignSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Vector3 explosionPos = transform.position;
-            Collider[] colliders = Physics.OverlapSphere(explosionPos, blastRadius);
-            foreach (Collider col in colliders)
-            {
-                if (col.gameObject == gameObject)
-                    continue;
-
-                Rigidbody rb = col.GetComponent<Rigidbody>();
-                if (rb != null)
-                    rb.AddExplosionForce(blastForce, explosionPos, blastRadius, 3.0F, ForceMode.Impulse);
-            }
-        }
-
         Debug.DrawLine(transform.position, transform.position + cam.transform.up * 5f, Color.red);
         Debug.DrawLine(transform.position, transform.position + cam.transform.right * 5f, Color.red);        
     }
 
     private void FixedUpdate()
     {
-        if (go)
-        {
-            var hSpeed = h * Vector3.right * moveSpeed;
-            var vSpeed = v * Vector3.forward * moveSpeed;
+        var hSpeed = h * Vector3.right * moveSpeed;
+        var vSpeed = v * Vector3.forward * moveSpeed;
 
-            bb.Move(hSpeed, vSpeed);
-        }
+        bb.Move(hSpeed, vSpeed);
     }
 }
