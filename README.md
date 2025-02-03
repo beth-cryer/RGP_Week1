@@ -21,6 +21,8 @@ https://opengameart.org/content/gazebo-0
 https://opengameart.org/content/picnic-table
 https://opengameart.org/content/medieval-church
 https://opengameart.org/content/medieval-props-textured
+https://opengameart.org/content/trashcan
+https://opengameart.org/content/dumpster-3-cubic-yard-capacity
 
 Beyblade models:
 https://www.cgtrader.com/free-3d-print-models/games-toys/toys/beyblade-galman-metal-masters-version
