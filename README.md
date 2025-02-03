@@ -3,37 +3,41 @@
 
 # Asset Credits
 
-Sounds:
-https://freesound.org/people/dinoroki/sounds/731932/
-Collision 1 by JustInvoke -- https://freesound.org/s/446126/ -- License: Attribution 4.0
-Collision 2 by JustInvoke -- https://freesound.org/s/446125/ -- License: Attribution 4.0
-Collision 3 by JustInvoke -- https://freesound.org/s/446132/ -- License: Attribution 4.0
+Models:
 
-"Welcome to the Show" Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/
+Low-Poly Skyscraper by NoLogoGames (2015) - https://opengameart.org/content/low-poly-skyscraper - CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/
+PS1 Trees by Starry Skydancer (2024) - https://opengameart.org/content/ps1-trees - CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Car by Creomoto (2014) - https://opengameart.org/content/car-0 - CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Park Bench by Teh_Bucket (2015) - https://opengameart.org/content/park-bench - CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Gazebo by Teh_Bucket (2015) - https://opengameart.org/content/gazebo-0 - CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Picnic Table by Teh_Bucket (2015) - https://opengameart.org/content/picnic-table- CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Bicycle by Clint Bellanger (2013) - https://opengameart.org/content/bicycle - CC-BY 3.0 https://creativecommons.org/licenses/by/3.0/
+Medieval Props Textured by Clint Bellanger (2010) - https://opengameart.org/content/medieval-props-textured - CC-BY 3.0 https://creativecommons.org/licenses/by/3.0/
+Medieval Church by Daniel Andersson (2014) - https://opengameart.org/content/medieval-church - CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Trashcan by yethiel (2013) - https://opengameart.org/content/trashcan - CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Dumpster (3 cubic yard capacity) by ulf (2014) - https://opengameart.org/content/dumpster-3-cubic-yard-capacity - CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/
+
+Beyblade Galman Metal Masters version Free 3D print model by Fabianm (2024) - https://www.cgtrader.com/free-3d-print-models/games-toys/toys/beyblade-galman-metal-masters-version - Editorial No Ai License https://www.cgtrader.com/pages/terms-and-conditions#general-terms-of-licensing
+BEYBLADE gemstone Free 3D model by errajimohamed498 (2021) - https://www.cgtrader.com/free-3d-models/sports/toy/beyblade-184c5461-ed5a-40d7-bc98-9b7fca5ac80a - Editorial No Ai License https://www.cgtrader.com/pages/terms-and-conditions#general-terms-of-licensing
+
 
 Textures:
+
+Freepbr textures are available under a free non-commercial license https://freepbr.com/about-free-pbr/
 https://freepbr.com/product/highway-lanes-pbr/
 https://freepbr.com/product/concrete-2/
 https://freepbr.com/product/grassy-meadow1/
 https://freepbr.com/product/pebbled-asphalt1/
 https://freepbr.com/product/old-plywood/
-https://opengameart.org/content/urban-jungle
 
-Models:
-https://opengameart.org/content/low-poly-skyscraper
-https://opengameart.org/content/ps1-trees
-https://opengameart.org/content/car-0
-https://opengameart.org/content/park-bench
-https://opengameart.org/content/bicycle
-https://opengameart.org/content/gazebo-0
-https://opengameart.org/content/picnic-table
-https://opengameart.org/content/medieval-church
-https://opengameart.org/content/medieval-props-textured
-https://opengameart.org/content/trashcan
-https://opengameart.org/content/dumpster-3-cubic-yard-capacity
+Urban Jungle texture pack by KNau (2012) - https://opengameart.org/content/urban-jungle - CC0 https://creativecommons.org/publicdomain/zero/1.0/
 
-Beyblade models:
-https://www.cgtrader.com/free-3d-print-models/games-toys/toys/beyblade-galman-metal-masters-version
-https://www.cgtrader.com/free-3d-models/sports/toy/beyblade-184c5461-ed5a-40d7-bc98-9b7fca5ac80a
+
+Sounds:
+
+Slime Collision by dinoroki (2024) - https://freesound.org/s/731932/ - License: Creative Commons 0
+Collision 1 by JustInvoke (2018) - https://freesound.org/s/446126/ - License: Attribution 4.0
+Collision 2 by JustInvoke (2018) - https://freesound.org/s/446125/ - License: Attribution 4.0
+Collision 3 by JustInvoke (2018) - https://freesound.org/s/446132/ - License: Attribution 4.0
+
+"Welcome to the Show" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/
