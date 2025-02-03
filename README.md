@@ -1,7 +1,14 @@
 # RGP_Week1
 
+STICKY SPINNER / BEYBLADE KATAMARI
+
+-WHAT IF A FIDGET SPINNER GOT REALLY STICKY? OR SOMETHING
+The game works like Katamari except you are constantly spinning, so the shapes you make are a lot different!
+and I did it with rigidbodies and joints for some reason so the physics is significantly wackier :p
+
 HOW TO PLAY:
 Spin into smaller objects to stick to them and increase your own total mass.
+Spinning into a larger object will just make it bounce off you, so come back for it later!
 Try to get as big as you can before Unity's physics engine implodes and sends you hurtling into space :)
 
 CONTROLS:

@@ -37,7 +37,7 @@ public class Beyblade : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.angularVelocity = transform.up * 20f * totalSize / 4;
+        rb.angularVelocity = transform.up * 20f * totalSize * 0.15f;
         //rb.AddTorque(transform.up * 30f * totalSize, ForceMode.Acceleration);
         //transform.Rotate(transform.up, 60f * totalSize * Time.deltaTime);
     }
