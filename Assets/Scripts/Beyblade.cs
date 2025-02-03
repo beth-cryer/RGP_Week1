@@ -1,10 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Beyblade : MonoBehaviour
 {
-    public float totalSize = 5f;
+    private float totalSize;
+
+    public float TotalSize
+    {
+        get { return totalSize; }
+        set
+        {
+            totalSize = value;
+            OnSizeChange?.Invoke(value);
+        }
+    }
+
     public Vector3 spinAxis { get; private set; }
 
     private Rigidbody rb;
@@ -13,7 +25,10 @@ public class Beyblade : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         spinAxis = transform.up;
+        TotalSize = 7f;
     }
+
+    public event Action<float> OnSizeChange;
 
     private void Update()
     {
@@ -22,7 +37,7 @@ public class Beyblade : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.angularVelocity = transform.up * 30f * totalSize / 4;
+        rb.angularVelocity = transform.up * 20f * totalSize / 4;
         //rb.AddTorque(transform.up * 30f * totalSize, ForceMode.Acceleration);
         //transform.Rotate(transform.up, 60f * totalSize * Time.deltaTime);
     }
@@ -31,8 +46,8 @@ public class Beyblade : MonoBehaviour
     {
         //rb.velocity = hSpeed + vSpeed;
 
-        rb.AddForce(hSpeed * totalSize / 4, ForceMode.Acceleration);
-        rb.AddForce(vSpeed * totalSize / 4, ForceMode.Acceleration);
+        rb.AddForce(hSpeed * totalSize * 0.15f, ForceMode.Acceleration);
+        rb.AddForce(vSpeed * totalSize * 0.15f, ForceMode.Acceleration);
        
 
         //transform.Translate(hSpeed + vSpeed, Space.World);

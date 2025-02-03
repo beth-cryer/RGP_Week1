@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class StickyObject : MonoBehaviour
     private CinemachineTargetGroup targetGroup;
     private Rigidbody rb;
 
+    private Collider col;
+
     private void Awake()
     {
         //Initial check for if this StickyObject is a Player or Enemy
@@ -27,6 +30,21 @@ public class StickyObject : MonoBehaviour
         {
             stickParent = transform;
         }
+
+        col = GetComponent<Collider>();
+        ColliderCooldown(0.2f);
+    }
+
+    public void ColliderCooldown(float secs)
+    {
+        col.enabled = false;
+        StartCoroutine(Cooldown(secs));
+    }
+
+    private IEnumerator Cooldown(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+        col.enabled = true;
     }
 
     public void GetOwnerBeyblade(PlayerController ownerPlayer, Enemy ownerEnemy)
@@ -94,17 +112,27 @@ public class StickyObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        float size = collision.transform.localScale.magnitude;
-        float radius = size / 2;
-
         if (collision.transform.CompareTag("Stickable"))
         {
+            StickableObject target = GetComponent<StickableObject>();
             StickyObject stickyObject = collision.transform.GetComponent<StickyObject>();
 
+            if (stickyObject != null) return;
+
+            float size = collision.transform.localScale.magnitude;
+
+            if (target != null && target.size != 0)
+                size = target.size;
+
+            float width = (collision.transform.localScale.x + collision.transform.localScale.y) / 2;
+            float radius = width / 2;
+
+            float requiredStickSize = size * 1.75f;
+
             //If colliding object is bigger than player totalSize, reduce size of colliding object and then detach this stickyobject from the katamari
-            if (bb.totalSize < size * 1.75f)
+            if (bb.TotalSize < requiredStickSize)
             {
-                Debug.Log("Too small! " + bb.totalSize + " < " + size * 1.5f);
+                Debug.Log("Too small! " + bb.TotalSize + " < " + requiredStickSize);
 
                 if (GetComponent<PlayerController>() != null)
                 {
@@ -134,7 +162,7 @@ public class StickyObject : MonoBehaviour
             }
 
             //If player totalSize beats colliding object, add it to the katamari
-            Debug.Log("THE BEYBLADE GROWS");
+            Debug.Log("THE BEYBLADE GROWS. " + bb.TotalSize + " > " + requiredStickSize);
 
             //If objext already sticky and attached to enemy,
             if (stickyObject && stickyObject.enemy)
@@ -149,10 +177,10 @@ public class StickyObject : MonoBehaviour
 
                 targetStickyObject.AddToCam(radius);
                 targetStickyObject.StickToParent(stickParent, stickParent);
+                targetStickyObject.ColliderCooldown(0.2f);
             }
 
-            //bb.Spin(60f);
-            bb.totalSize += radius;
+            bb.TotalSize += width;
         }
     }
 }

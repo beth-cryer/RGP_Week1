@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float blastForce = 50f;
 
     [SerializeField] private Transform cam;
+    [SerializeField] private SizeBar sizeBar;
+    [SerializeField] private GameObject victoryText;
 
     private bool go = false;
     private Rigidbody rb;
@@ -26,6 +28,17 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         bb = GetComponent<Beyblade>();
+
+        bb.OnSizeChange += sizeBar.SetSizeBar;
+        bb.OnSizeChange += checkVictory;
+    }
+
+    private void checkVictory(float size)
+    {
+        if (size > 500f)
+        {
+            victoryText.SetActive(true);
+        }
     }
 
     private void Update()
@@ -78,20 +91,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.DrawLine(transform.position, transform.position + cam.transform.up * 5f, Color.red);
-        Debug.DrawLine(transform.position, transform.position + cam.transform.right * 5f, Color.red);
-
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, cam.camDistance + 1.0f))
-            {
-                Debug.Log(hit.transform.name);
-                Debug.Log("hit");
-            }
-        }
-        */
-        
+        Debug.DrawLine(transform.position, transform.position + cam.transform.right * 5f, Color.red);        
     }
 
     private void FixedUpdate()
