@@ -19,6 +19,8 @@ https://opengameart.org/content/park-bench
 https://opengameart.org/content/bicycle
 https://opengameart.org/content/gazebo-0
 https://opengameart.org/content/picnic-table
+https://opengameart.org/content/medieval-church
+https://opengameart.org/content/medieval-props-textured
 
 Beyblade models:
 https://www.cgtrader.com/free-3d-print-models/games-toys/toys/beyblade-galman-metal-masters-version

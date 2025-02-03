@@ -67,9 +67,9 @@ public class StickyObject : MonoBehaviour
     //Add self to camera target group and add own radius to player view radius
     public void AddToCam(float radius)
     {
-        targetGroup.AddMember(transform, 1, radius);
+        targetGroup.AddMember(transform, 1, 1);
 
-        float playerRadius = radius / 2;
+        float playerRadius = radius / 4;
 
         if (GetComponent<PlayerController>() != null)
         {
@@ -94,7 +94,7 @@ public class StickyObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        float size = (collision.transform.localScale.x + collision.transform.localScale.z) / 2;
+        float size = collision.transform.localScale.magnitude;
         float radius = size / 2;
 
         if (collision.transform.CompareTag("Stickable"))
@@ -102,9 +102,9 @@ public class StickyObject : MonoBehaviour
             StickyObject stickyObject = collision.transform.GetComponent<StickyObject>();
 
             //If colliding object is bigger than player totalSize, reduce size of colliding object and then detach this stickyobject from the katamari
-            if (bb.totalSize <= size)
+            if (bb.totalSize < size * 1.75f)
             {
-                Debug.Log("Too small! " + bb.totalSize + " < " + size);
+                Debug.Log("Too small! " + bb.totalSize + " < " + size * 1.5f);
 
                 if (GetComponent<PlayerController>() != null)
                 {
