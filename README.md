@@ -4,8 +4,11 @@ HOW TO PLAY:
 Spin into smaller objects to stick to them and increase your own total mass.
 Try to get as big as you can before Unity's physics engine implodes and sends you hurtling into space :)
 
-CONTROLS: WASD to influence spin direction
-That's it
+CONTROLS:
+WASD to influence spin direction
+ESCAPE to exit the game
+R to restart (in case of catastrophic failure)
+
 
 # Asset Credits
 
