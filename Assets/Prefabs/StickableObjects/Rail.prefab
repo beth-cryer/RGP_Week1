@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4180832209017414696}
   - component: {fileID: 3982943879386338541}
   - component: {fileID: 275645964365226301}
-  - component: {fileID: 5193677609624979287}
   m_Layer: 0
   m_Name: Rail
   m_TagString: Untagged
@@ -810,28 +809,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038765463397120388}
-  m_Mesh: {fileID: 0}
---- !u!64 &5193677609624979287
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038765463397120388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &2391906718028949204
 GameObject:

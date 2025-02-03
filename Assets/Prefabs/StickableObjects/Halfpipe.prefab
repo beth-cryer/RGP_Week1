@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 765185170974768738}
   - component: {fileID: 2839134075448898437}
   - component: {fileID: 5579773467304921670}
-  - component: {fileID: 5126200331908691440}
   m_Layer: 0
   m_Name: Arch
   m_TagString: Untagged
@@ -1312,26 +1311,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8413335252908427532}
-  m_Mesh: {fileID: 0}
---- !u!64 &5126200331908691440
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8413335252908427532}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Beyblade : MonoBehaviour
 {
-    public float totalSize = 2.5f;
+    public float totalSize = 5f;
     public Vector3 spinAxis { get; private set; }
 
     private Rigidbody rb;

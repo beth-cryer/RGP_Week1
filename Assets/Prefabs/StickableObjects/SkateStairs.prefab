@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2278006294834733569}
   - component: {fileID: 6936035546718156581}
   - component: {fileID: 5233545965612798764}
-  - component: {fileID: 3014923726916289575}
   m_Layer: 0
   m_Name: Rail (3)
   m_TagString: Untagged
@@ -811,28 +810,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979559724795686808}
   m_Mesh: {fileID: 0}
---- !u!64 &3014923726916289575
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979559724795686808}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &1116099906641241181
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +823,6 @@ GameObject:
   - component: {fileID: 5500190235520709242}
   - component: {fileID: 5706535025197221909}
   - component: {fileID: 1965702535710256762}
-  - component: {fileID: 6742215850141578783}
   m_Layer: 0
   m_Name: Stairs
   m_TagString: Untagged
@@ -2708,28 +2684,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116099906641241181}
   m_Mesh: {fileID: 0}
---- !u!64 &6742215850141578783
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116099906641241181}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &3274772819783173293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,7 +2697,6 @@ GameObject:
   - component: {fileID: 2087692976788479974}
   - component: {fileID: 7965282355552428894}
   - component: {fileID: 7029521711184065080}
-  - component: {fileID: 2649046456398078754}
   m_Layer: 0
   m_Name: Rail (2)
   m_TagString: Untagged
@@ -3540,28 +3493,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3274772819783173293}
-  m_Mesh: {fileID: 0}
---- !u!64 &2649046456398078754
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3274772819783173293}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &5878693874591860415
 GameObject:
