@@ -20721,12 +20721,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649090397}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7118fa5371ed91d489129cdc084cef7c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -28482,6 +28482,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 587939461}
     m_Modifications:
+    - target: {fileID: 390161454555536391, guid: d0cf0016dfa905d4fa595cd6202d17bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88f81601add942b4588978adb902f1c7, type: 2}
     - target: {fileID: 3972593375737899847, guid: d0cf0016dfa905d4fa595cd6202d17bc,
         type: 3}
       propertyPath: m_Name
