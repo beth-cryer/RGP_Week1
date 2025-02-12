@@ -14,6 +14,6 @@ public class SizeBar : MonoBehaviour
 
         SizeBarImg.localScale = new Vector3(scale, currentScale.y, currentScale.z);
 
-        SizeBarText.SetText(size.ToString());
+        SizeBarText.SetText(Mathf.Round(size-7).ToString());
     }
 }
