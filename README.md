@@ -2,6 +2,8 @@
 
 STICKY SPINNER / BEYBLADE KATAMARI
 
+https://befany.itch.io/sticky-spinner
+
 -WHAT IF A FIDGET SPINNER GOT REALLY STICKY? OR SOMETHING
 The game works like Katamari except you are constantly spinning, so the shapes you make are a lot different!
 and I did it with rigidbodies and joints for some reason so the physics is significantly wackier :p
